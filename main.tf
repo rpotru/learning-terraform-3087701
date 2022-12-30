@@ -47,7 +47,7 @@ module "blog_sg" {
   version = "4.16.2"
 
   name = "blog_new"
-  vpc_id = module.vpc.public_subnets[0]
+  vpc_id = module.vpc.vpc_id
 
 
   ingress_rules       = ["http-80-tcp", "https-8443-tcp"]
@@ -63,7 +63,7 @@ resource "aws_security_group" "blog" {
   tags = {
     Terraform = "true"
   }
-  vpc_id = module.vpc.public_subnets[0]
+  vpc_id = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "blog_http_in" {
